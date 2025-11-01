@@ -1,0 +1,17 @@
+[project]
+name = "canieatthemushroom"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "clipspy>=1.0.6",
+    "kagglehub>=0.3.13",
+    "pandas>=2.3.3",
+    "pytest>=8.4.2",
+]
+
+[dependency-groups]
+dev = [
+    "marimo>=0.17.6",
+]
