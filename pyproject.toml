@@ -9,6 +9,7 @@ dependencies = [
     "kagglehub>=0.3.13",
     "pandas>=2.3.3",
     "pytest>=8.4.2",
+    "reflex>=0.8.17",
 ]
 
 [dependency-groups]
