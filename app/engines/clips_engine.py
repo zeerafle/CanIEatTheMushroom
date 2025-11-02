@@ -31,7 +31,9 @@ class CLIPSRulesEngine:
         if rules_file is None:
             # Assume rules.CLP is in the project root
             current_file = Path(__file__)
-            project_root = current_file.parent.parent  # Go up from app/ to project root
+            project_root = (
+                current_file.parent.parent.parent
+            )  # Go up from app/ to project root
             rules_file = str(project_root / "rules.CLP")
 
         if not os.path.exists(rules_file):

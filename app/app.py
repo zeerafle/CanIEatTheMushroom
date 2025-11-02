@@ -2,7 +2,7 @@ import reflex as rx
 
 from .components.question_form import question_form
 from .components.result_display import result_display
-from .state_clips import MushroomExpertState
+from .state import MushroomExpertState
 
 
 def index() -> rx.Component:

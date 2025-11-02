@@ -1,6 +1,6 @@
 import reflex as rx
 
-from ..state_clips import MushroomExpertState
+from ..state import MushroomExpertState
 
 
 def result_display() -> rx.Component:
