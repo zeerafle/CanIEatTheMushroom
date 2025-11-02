@@ -1,6 +1,6 @@
 import reflex as rx
 
-from ..state import MushroomExpertState
+from ..state_clips import MushroomExpertState
 
 
 def result_display() -> rx.Component:
@@ -22,6 +22,7 @@ def result_display() -> rx.Component:
                         size="2",
                         color="gray",
                     ),
+                    spacing="2",
                 ),
                 rx.cond(
                     MushroomExpertState.prediction == "poisonous",
@@ -37,6 +38,7 @@ def result_display() -> rx.Component:
                             size="2",
                             color="gray",
                         ),
+                        spacing="2",
                     ),
                     rx.callout(
                         "Could not determine if this mushroom is safe.",
@@ -48,7 +50,7 @@ def result_display() -> rx.Component:
             ),
             rx.divider(margin_top="20px", margin_bottom="20px"),
             rx.text(
-                f"Total questions asked: {MushroomExpertState.questions_asked}",
+                MushroomExpertState.get_progress,
                 size="2",
                 color="gray",
             ),

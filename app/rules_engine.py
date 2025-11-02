@@ -129,14 +129,14 @@ class RulesEngine:
             ),
         ]
 
-    def check_rules(self, facts: dict[str, str]) -> tuple[str, Rule] | None:
+    def check_rules(self, facts: dict[str, str]) -> tuple[str, str, str] | None:
         """
         Check if any rule matches the current facts.
-        Returns (target, rule) if a rule matches, None otherwise.
+        Returns (target, rule_name, description) if a rule matches, None otherwise.
         """
         for rule in self.rules:
             if self._rule_matches(rule, facts):
-                return (rule.target, rule)
+                return (rule.target, rule.name, rule.description)
         return None
 
     def _rule_matches(self, rule: Rule, facts: dict[str, str]) -> bool:
