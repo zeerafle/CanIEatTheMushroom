@@ -55,16 +55,15 @@ def image_upload_section() -> rx.Component:
                                 rx.selected_files("mushroom_image_upload"),
                                 lambda file: rx.text(file),
                             ),
+                        ),
+                        rx.cond(
+                            MushroomExpertState.get_analyzing_status,
+                            rx.button("Analyze Image", loading=True, size="2"),
                             rx.button(
-                                rx.cond(
-                                    MushroomExpertState.analyzing_image,
-                                    rx.spinner(size="2"),
-                                    "Analyze Image",
-                                ),
+                                "Analyze Image",
                                 on_click=lambda: MushroomExpertState.handle_image_upload(
                                     rx.upload_files(upload_id="mushroom_image_upload")
                                 ),
-                                disabled=MushroomExpertState.analyzing_image,
                                 size="2",
                             ),
                         ),

@@ -68,16 +68,11 @@ class LLMVisionService:
             return {}
 
         try:
-            import io
-
             from google import genai
-            from PIL import Image
+            from google.genai import types
 
             # Configure Gemini
             client = genai.Client(api_key=self.api_key)
-
-            # Convert bytes to PIL Image
-            image = Image.open(io.BytesIO(image_data))
 
             # Create the prompt with all available attributes
             prompt = self._create_analysis_prompt()
@@ -85,7 +80,10 @@ class LLMVisionService:
             # Generate content with structured output
             response = client.models.generate_content(
                 model=self.model,
-                contents=[prompt, image],
+                contents=[
+                    prompt,
+                    types.Part.from_bytes(data=image_data, mime_type="image/jpeg"),
+                ],
                 config={
                     "response_mime_type": "application/json",
                     "response_schema": MushroomAttributes,

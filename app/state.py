@@ -49,6 +49,7 @@ class MushroomExpertState(rx.State):
         llm_service = get_llm_vision_service()
         self.llm_enabled = llm_service.is_enabled()
 
+    @rx.event
     async def handle_image_upload(self, files: list[rx.UploadFile]):
         """Handle mushroom image upload and analyze with LLM."""
         if not files:
@@ -63,16 +64,6 @@ class MushroomExpertState(rx.State):
 
             # Read the file data
             image_data = await upload_file.read()
-
-            # Get file extension to determine format
-            filename = upload_file.filename or ""
-            image_format = "jpeg"
-            if filename.lower().endswith(".png"):
-                image_format = "png"
-            elif filename.lower().endswith(".jpg") or filename.lower().endswith(
-                ".jpeg"
-            ):
-                image_format = "jpeg"
 
             # Analyze with LLM
             llm_service = get_llm_vision_service()
@@ -94,6 +85,10 @@ class MushroomExpertState(rx.State):
             print(f"✗ Error in handle_image_upload: {e}")
         finally:
             self.analyzing_image = False
+
+    @rx.var
+    def get_analyzing_status(self) -> bool:
+        return self.analyzing_image
 
     def apply_llm_suggestion(self, attribute: str):
         """Apply an LLM suggestion for a specific attribute."""
