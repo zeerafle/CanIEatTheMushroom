@@ -41,7 +41,7 @@ def question_form() -> rx.Component:
             ),
             rx.divider(margin_top="20px", margin_bottom="20px"),
             rx.text(
-                f"Questions answered: {MushroomExpertState.get_answered_count}",
+                MushroomExpertState.get_progress,
                 size="2",
                 color="gray",
             ),

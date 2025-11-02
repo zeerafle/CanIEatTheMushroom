@@ -56,7 +56,8 @@ Orchestrates the UI, conditionally showing either the question form or result di
 ## Running the App
 
 ```bash
-reflex run
+uv sync
+uv run reflex run
 ```
 
 Navigate to `http://localhost:3000` to use the expert system.
