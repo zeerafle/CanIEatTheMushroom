@@ -1,33 +1,34 @@
 import reflex as rx
-from rxconfig import config
 
-from .components.radio_form import radio_form
-
-from .state import FormRadioState
-
-
-class State(rx.State):
-    """The app state."""
+from .components.question_form import question_form
+from .components.result_display import result_display
+from .state import MushroomExpertState
 
 
 def index() -> rx.Component:
-    # Welcome Page (Index)
+    """Main page of the mushroom expert system."""
     return rx.container(
         rx.color_mode.button(position="top-right"),
         rx.vstack(
-            rx.heading("Mantar yiyebilir miyim? 🍄", size="9"),
-            rx.box(
-                radio_form("How is the odor?"),
-                margin_top="10px",
+            rx.heading("Can I Eat The Mushroom? 🍄", size="9"),
+            rx.text(
+                "Answer questions about the mushroom to determine if it's edible or poisonous.",
+                size="4",
+                color="gray",
+                margin_bottom="30px",
             ),
-            rx.badge(
-                rx.text(FormRadioState.form_data)
+            # Show question form or result based on completion status
+            rx.cond(
+                MushroomExpertState.is_complete,
+                result_display(),
+                question_form(),
             ),
             spacing="5",
             justify="center",
             min_height="85vh",
             align="center",
         ),
+        size="3",
     )
 
 
