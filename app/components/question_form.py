@@ -12,6 +12,34 @@ def question_form() -> rx.Component:
                 size="6",
                 margin_bottom="20px",
             ),
+            # Show LLM suggestion for current question if available
+            rx.cond(
+                MushroomExpertState.llm_suggestions.contains(
+                    MushroomExpertState.current_attribute
+                ),
+                rx.callout(
+                    rx.hstack(
+                        rx.text(
+                            "AI suggestion available for this question",
+                            size="2",
+                        ),
+                        rx.button(
+                            "Auto-fill from AI",
+                            size="1",
+                            variant="soft",
+                            on_click=MushroomExpertState.apply_llm_suggestion(
+                                MushroomExpertState.current_attribute
+                            ),
+                        ),
+                        spacing="3",
+                        align="center",
+                    ),
+                    icon="sparkles",
+                    color_scheme="blue",
+                    size="1",
+                    margin_bottom="15px",
+                ),
+            ),
             rx.form.root(
                 rx.vstack(
                     rx.radio_group.root(

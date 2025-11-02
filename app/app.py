@@ -1,5 +1,6 @@
 import reflex as rx
 
+from .components.image_upload import image_upload_section
 from .components.question_form import question_form
 from .components.result_display import result_display
 from .state import MushroomExpertState
@@ -21,7 +22,15 @@ def index() -> rx.Component:
             rx.cond(
                 MushroomExpertState.is_complete,
                 result_display(),
-                question_form(),
+                rx.vstack(
+                    # Optional AI-powered image upload
+                    image_upload_section(),
+                    # Question form
+                    question_form(),
+                    spacing="5",
+                    width="100%",
+                    align="center",
+                ),
             ),
             spacing="5",
             justify="center",
@@ -33,4 +42,4 @@ def index() -> rx.Component:
 
 
 app = rx.App()
-app.add_page(index)
+app.add_page(index, on_load=MushroomExpertState.on_load)

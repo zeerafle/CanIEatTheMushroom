@@ -4,6 +4,13 @@
 
 This is a web-based expert system built with Reflex that determines whether a mushroom is edible or poisonous based on its characteristics. The system asks questions one at a time and stops as soon as a rule matches.
 
+### 🤖 AI Vision Feature
+
+# Set your Gemini API key
+export GEMINI_API_KEY="your-key-here"
+
+The AI feature is completely optional - the app works perfectly fine without it!
+
 ## How It Works
 
 ### 1. Rule Engine (`app/rules_engine.py`)
@@ -53,14 +60,36 @@ Orchestrates the UI, conditionally showing either the question form or result di
 - **User-friendly**: Shows progress and allows restarting
 - **Bilingual support**: Ready for localization (Turkish title included)
 
-## Running the App
+## Installation & Running
+
+### Basic Installation (Manual Mode Only)
 
 ```bash
+# Install dependencies
 uv sync
+
+# Run the app
+uv run reflex run
+```
+
+### Installation with AI Vision (Optional)
+
+# Configure API key
+```bash
+cp .env.example .env
+# Edit .env and add your Google API key
+
+# Run the app
 uv run reflex run
 ```
 
 Navigate to `http://localhost:3000` to use the expert system.
+
+### Features
+
+- **Manual Mode** (default): Answer questions one by one
+- **AI Vision Mode** (optional): Upload mushroom images for automatic attribute detection
+  - Requires Google Gemini API key
 
 ## Example Rules
 
@@ -73,3 +102,11 @@ Navigate to `http://localhost:3000` to use the expert system.
 - If odor is almond (a) → edible
 - If habitat is waste (w) → edible
 - If cap shape is sunken (s) → edible
+
+## Documentation
+
+- **[Testing Guide](TESTING.md)** - Information about running tests
+
+## Safety Warning
+
+⚠️ **This is an educational expert system only.** Never use this application to determine if real mushrooms are safe to eat. Always consult professional mycologists and field guides for actual mushroom identification.

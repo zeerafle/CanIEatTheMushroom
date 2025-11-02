@@ -8,6 +8,9 @@ dependencies = [
     "clipspy>=1.0.6",
     "pytest>=8.4.2",
     "reflex>=0.8.17",
+    "google-genai>=1.47.0",
+    "pillow>=10.0.0",
+    "python-dotenv>=1.2.1",
 ]
 
 [dependency-groups]
