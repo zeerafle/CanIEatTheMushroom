@@ -10,11 +10,11 @@ def question_form() -> rx.Component:
             rx.heading(
                 MushroomExpertState.get_current_question,
                 size="6",
-                margin_bottom="20px",
+                margin_bottom="10px",
             ),
             # Show LLM suggestion for current question if available
             rx.cond(
-                MushroomExpertState.llm_suggestions.contains(
+                MushroomExpertState.llm_suggestions.get(
                     MushroomExpertState.current_attribute
                 ),
                 rx.callout(
@@ -27,7 +27,7 @@ def question_form() -> rx.Component:
                             "Auto-fill from AI",
                             size="1",
                             variant="soft",
-                            on_click=MushroomExpertState.apply_llm_suggestion(
+                            on_click=lambda _: MushroomExpertState.apply_llm_suggestion(
                                 MushroomExpertState.current_attribute
                             ),
                         ),
@@ -40,32 +40,45 @@ def question_form() -> rx.Component:
                     margin_bottom="15px",
                 ),
             ),
-            rx.form.root(
-                rx.vstack(
-                    rx.radio_group.root(
-                        rx.foreach(
-                            MushroomExpertState.get_current_options,
-                            lambda option: rx.radio_group.item(
-                                rx.text(option[1]),  # Display name
-                                value=option[0],  # Code
+            rx.flex(
+                rx.form.root(
+                    rx.vstack(
+                        rx.radio_group.root(
+                            rx.foreach(
+                                MushroomExpertState.get_current_options,
+                                lambda option: rx.radio_group.item(
+                                    rx.text(option[1]),  # Display name
+                                    value=option[0],  # Code
+                                ),
                             ),
+                            name="answer",
+                            direction="column",
+                            spacing="3",
                         ),
-                        name="answer",
-                        direction="column",
+                        rx.button(
+                            "Submit Answer",
+                            type="submit",
+                            size="3",
+                            margin_top="20px",
+                        ),
+                        width="100%",
                         spacing="3",
+                        align="start",
                     ),
-                    rx.button(
-                        "Submit Answer",
-                        type="submit",
-                        size="3",
-                        margin_top="20px",
-                    ),
+                    on_submit=MushroomExpertState.handle_answer,
                     width="100%",
-                    spacing="3",
-                    align="start",
                 ),
-                on_submit=MushroomExpertState.handle_answer,
-                width="100%",
+                # Attribute description
+                rx.cond(
+                    MushroomExpertState.get_current_description != "",
+                    rx.text(
+                        MushroomExpertState.get_current_description,
+                        size="2",
+                        color="gray",
+                        margin_bottom="20px",
+                    ),
+                ),
+                spacing="2",
             ),
             rx.divider(margin_top="20px", margin_bottom="20px"),
             rx.text(

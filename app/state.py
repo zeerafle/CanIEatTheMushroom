@@ -1,7 +1,5 @@
 """State management using CLIPS-based rules engine."""
 
-from typing import Any
-
 import reflex as rx
 
 from .attributes import get_attribute_info
@@ -91,6 +89,7 @@ class MushroomExpertState(rx.State):
     def get_analyzing_status(self) -> bool:
         return self.analyzing_image
 
+    @rx.event
     def apply_llm_suggestion(self, attribute: str):
         """Apply an LLM suggestion for a specific attribute."""
         if attribute in self.llm_suggestions:
@@ -169,7 +168,7 @@ class MushroomExpertState(rx.State):
         self.llm_error = ""
         self.llm_suggestions_applied = False
 
-    def handle_answer(self, form_data: dict[str, Any]):
+    def handle_answer(self, form_data: dict[str, str]):
         """Handle form submission with an answer (matches form component call)."""
         print("\n📝 handle_answer called")
         print(f"   Form data: {form_data}")
@@ -257,6 +256,14 @@ class MushroomExpertState(rx.State):
             attr_info = get_attribute_info(self.current_attribute)
             return attr_info["options"]
         return []
+
+    @rx.var
+    def get_current_description(self) -> str:
+        """Get the description for the current attribute."""
+        if self.current_attribute:
+            attr_info = get_attribute_info(self.current_attribute)
+            return attr_info.get("description", "")
+        return ""
 
     @rx.var
     def get_answered_count(self) -> int:
