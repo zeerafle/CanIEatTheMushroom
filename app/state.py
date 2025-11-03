@@ -1,5 +1,7 @@
 """State management using CLIPS-based rules engine."""
 
+from typing import Any
+
 import reflex as rx
 
 from .attributes import get_attribute_info
@@ -168,7 +170,7 @@ class MushroomExpertState(rx.State):
         self.llm_error = ""
         self.llm_suggestions_applied = False
 
-    def handle_answer(self, form_data: dict[str, str]):
+    def handle_answer(self, form_data: dict[str, Any]):
         """Handle form submission with an answer (matches form component call)."""
         print("\n📝 handle_answer called")
         print(f"   Form data: {form_data}")

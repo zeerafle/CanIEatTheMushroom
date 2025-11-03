@@ -42,4 +42,4 @@ def index() -> rx.Component:
 
 
 app = rx.App()
-app.add_page(index, on_load=MushroomExpertState.on_load)
+app.add_page(index, on_load=MushroomExpertState.on_load, title="Can I Eat The Mushroom")
