@@ -75,7 +75,9 @@ def image_upload_section() -> rx.Component:
                         rx.hstack(
                             rx.icon("check-circle", color="green", size=20),
                             rx.text(
-                                f"Image analyzed! Found {MushroomExpertState.get_llm_suggestions_count} attributes",
+                                "Image analyzed! Found ",
+                                MushroomExpertState.get_llm_suggestions_count,
+                                " attributes",
                                 size="3",
                                 weight="bold",
                                 color="green",
@@ -83,66 +85,117 @@ def image_upload_section() -> rx.Component:
                             spacing="2",
                         ),
                         rx.divider(),
-                        rx.text(
-                            "AI Suggestions:",
-                            size="3",
-                            weight="bold",
-                            margin_top="10px",
-                        ),
-                        # Display suggestions
-                        rx.vstack(
-                            rx.foreach(
-                                MushroomExpertState.llm_suggestions.items(),
-                                lambda item: rx.card(
-                                    rx.hstack(
-                                        rx.vstack(
+                        # Show suggestions list if not yet applied
+                        rx.cond(
+                            ~MushroomExpertState.llm_suggestions_applied,
+                            rx.vstack(
+                                rx.text(
+                                    "AI Suggestions:",
+                                    size="3",
+                                    weight="bold",
+                                    margin_top="10px",
+                                ),
+                                # Display suggestions
+                                rx.vstack(
+                                    rx.foreach(
+                                        MushroomExpertState.llm_suggestions.items(),
+                                        lambda item: rx.card(
+                                            rx.hstack(
+                                                rx.vstack(
+                                                    rx.text(
+                                                        item[0]
+                                                        .replace("_", " ")
+                                                        .title(),
+                                                        size="2",
+                                                        weight="bold",
+                                                    ),
+                                                    rx.text(
+                                                        "Value: ",
+                                                        item[1],
+                                                        size="2",
+                                                        color="gray",
+                                                    ),
+                                                    align="start",
+                                                    spacing="1",
+                                                ),
+                                                rx.spacer(),
+                                                rx.button(
+                                                    "Apply",
+                                                    size="1",
+                                                    variant="soft",
+                                                    on_click=MushroomExpertState.apply_llm_suggestion(
+                                                        item[0]
+                                                    ),
+                                                ),
+                                                width="100%",
+                                                align="center",
+                                            ),
+                                            size="1",
+                                        ),
+                                    ),
+                                    spacing="2",
+                                    width="100%",
+                                ),
+                                rx.hstack(
+                                    rx.button(
+                                        "Apply All Suggestions",
+                                        size="2",
+                                        on_click=MushroomExpertState.apply_all_llm_suggestions(),
+                                        variant="solid",
+                                    ),
+                                    rx.button(
+                                        "Upload Different Image",
+                                        size="2",
+                                        variant="outline",
+                                        on_click=MushroomExpertState.clear_llm_suggestions(),
+                                    ),
+                                    spacing="2",
+                                    width="100%",
+                                    margin_top="15px",
+                                ),
+                                width="100%",
+                                spacing="3",
+                                align="start",
+                            ),
+                            # Show message after suggestions applied
+                            rx.vstack(
+                                rx.callout(
+                                    rx.vstack(
+                                        rx.hstack(
+                                            rx.icon("check-circle-2", size=20),
                                             rx.text(
-                                                item[0].replace("_", " ").title(),
-                                                size="2",
+                                                "AI suggestions applied!",
+                                                size="3",
                                                 weight="bold",
                                             ),
+                                            spacing="2",
+                                        ),
+                                        rx.cond(
+                                            ~MushroomExpertState.is_complete,
                                             rx.text(
-                                                f"Value: {item[1]}",
+                                                "Please fill in the remaining questions below to get your result.",
                                                 size="2",
-                                                color="gray",
-                                            ),
-                                            align="start",
-                                            spacing="1",
-                                        ),
-                                        rx.spacer(),
-                                        rx.button(
-                                            "Apply",
-                                            size="1",
-                                            variant="soft",
-                                            on_click=MushroomExpertState.apply_llm_suggestion(
-                                                item[0]
+                                                margin_top="5px",
                                             ),
                                         ),
-                                        width="100%",
-                                        align="center",
+                                        spacing="2",
                                     ),
-                                    size="1",
+                                    icon="info",
+                                    color_scheme="blue",
+                                    size="2",
+                                    margin_top="10px",
                                 ),
+                                rx.button(
+                                    "Upload Different Image",
+                                    size="2",
+                                    variant="outline",
+                                    on_click=MushroomExpertState.clear_llm_suggestions(),
+                                    margin_top="10px",
+                                ),
+                                width="100%",
+                                spacing="2",
+                                align="start",
                             ),
-                            spacing="2",
-                            width="100%",
-                        ),
-                        rx.hstack(
-                            rx.button(
-                                "Apply All Suggestions",
-                                size="2",
-                                on_click=MushroomExpertState.apply_all_llm_suggestions(),
-                                variant="solid",
-                            ),
-                            rx.button(
-                                "Upload Different Image",
-                                size="2",
-                                variant="outline",
-                                on_click=MushroomExpertState.clear_llm_suggestions(),
-                            ),
-                            spacing="2",
-                            width="100%",
-                            margin_top="15px",
                         ),
                         width="100%",
                         spacing="3",

@@ -43,6 +43,7 @@ class MushroomExpertState(rx.State):
     analyzing_image: bool = False
     llm_suggestions: dict[str, str] = {}
     llm_error: str = ""
+    llm_suggestions_applied: bool = False
 
     def on_load(self):
         """Initialize state on page load."""
@@ -129,6 +130,9 @@ class MushroomExpertState(rx.State):
         new_answers.update(self.llm_suggestions)
         self.answers = new_answers
 
+        # Mark suggestions as applied
+        self.llm_suggestions_applied = True
+
         print(f"✓ Applied all {len(self.llm_suggestions)} LLM suggestions")
 
         # Check if we have a match
@@ -163,6 +167,7 @@ class MushroomExpertState(rx.State):
         self.llm_suggestions = {}
         self.image_uploaded = False
         self.llm_error = ""
+        self.llm_suggestions_applied = False
 
     def handle_answer(self, form_data: dict[str, Any]):
         """Handle form submission with an answer (matches form component call)."""
@@ -234,6 +239,7 @@ class MushroomExpertState(rx.State):
         self.image_uploaded = False
         self.llm_error = ""
         self.analyzing_image = False
+        self.llm_suggestions_applied = False
         print(f"   ✓ Reset complete. First question: {self.current_attribute}")
 
     @rx.var
