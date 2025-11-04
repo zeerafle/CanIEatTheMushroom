@@ -1,0 +1,142 @@
+........................................................................
+Target: p
+........................................................................
+odor = f
+   Support:  the target has value: 'p' for 100.000% of the 2160 rows matching the rule
+   Coverage: the rule matches: 2160 out of 3916 rows for target value: 'p'. This is:
+      55.158% of total rows for target value: 'p'
+      26.588% of total rows in data
+gill-color = b
+   Support:  The target has value: 'p' for 100.000% of the 1152 remaining rows matching the rule
+   Coverage: The rule matches: 1152 out of 1756 rows remaining for target value: 'p'. This is:
+      65.604% of remaining rows for target value: 'p'
+      29.418% of total rows for target value: 'p'
+      14.180% of total rows in data
+odor = p
+   Support:  The target has value: 'p' for 100.000% of the 256 remaining rows matching the rule
+   Coverage: The rule matches: 256 out of 604 rows remaining for target value: 'p'. This is:
+      42.384% of remaining rows for target value: 'p'
+      6.537% of total rows for target value: 'p'
+      3.151% of total rows in data
+odor = c
+   Support:  The target has value: 'p' for 100.000% of the 192 remaining rows matching the rule
+   Coverage: The rule matches: 192 out of 348 rows remaining for target value: 'p'. This is:
+      55.172% of remaining rows for target value: 'p'
+      4.903% of total rows for target value: 'p'
+      2.363% of total rows in data
+spore-print-color = r
+   Support:  The target has value: 'p' for 100.000% of the 72 remaining rows matching the rule
+   Coverage: The rule matches: 72 out of 156 rows remaining for target value: 'p'. This is:
+      46.154% of remaining rows for target value: 'p'
+      1.839% of total rows for target value: 'p'
+      0.886% of total rows in data
+odor = m
+   Support:  The target has value: 'p' for 100.000% of the 36 remaining rows matching the rule
+   Coverage: The rule matches: 36 out of 84 rows remaining for target value: 'p'. This is:
+      42.857% of remaining rows for target value: 'p'
+      0.919% of total rows for target value: 'p'
+      0.443% of total rows in data
+stalk-color-below-ring = y
+   Support:  The target has value: 'p' for 100.000% of the 24 remaining rows matching the rule
+   Coverage: The rule matches: 24 out of 48 rows remaining for target value: 'p'. This is:
+      50.000% of remaining rows for target value: 'p'
+      0.613% of total rows for target value: 'p'
+      0.295% of total rows in data
+stalk-color-below-ring = n AND stalk-root = ?
+   Support:  The target has value: 'p' for 100.000% of the 16 remaining rows matching the rule
+   Coverage: The rule matches: 16 out of 24 rows remaining for target value: 'p'. This is:
+      66.667% of remaining rows for target value: 'p'
+      0.409% of total rows for target value: 'p'
+      0.197% of total rows in data
+........................................................................
+Target: e
+........................................................................
+stalk-color-above-ring = g
+   Support:  the target has value: 'e' for 100.000% of the 576 rows matching the rule
+   Coverage: the rule matches: 576 out of 4208 rows for target value: 'e'. This is:
+      13.688% of total rows for target value: 'e'
+      7.090% of total rows in data
+odor = a
+   Support:  The target has value: 'e' for 100.000% of the 400 remaining rows matching the rule
+   Coverage: The rule matches: 400 out of 3632 rows remaining for target value: 'e'. This is:
+      11.013% of remaining rows for target value: 'e'
+      9.506% of total rows for target value: 'e'
+      4.924% of total rows in data
+odor = l
+   Support:  The target has value: 'e' for 100.000% of the 400 remaining rows matching the rule
+   Coverage: The rule matches: 400 out of 3232 rows remaining for target value: 'e'. This is:
+      12.376% of remaining rows for target value: 'e'
+      9.506% of total rows for target value: 'e'
+      4.924% of total rows in data
+stalk-color-below-ring = g
+   Support:  The target has value: 'e' for 100.000% of the 384 remaining rows matching the rule
+   Coverage: The rule matches: 384 out of 2832 rows remaining for target value: 'e'. This is:
+      13.559% of remaining rows for target value: 'e'
+      9.125% of total rows for target value: 'e'
+      4.727% of total rows in data
+population = a
+   Support:  The target has value: 'e' for 100.000% of the 384 remaining rows matching the rule
+   Coverage: The rule matches: 384 out of 2448 rows remaining for target value: 'e'. This is:
+      15.686% of remaining rows for target value: 'e'
+      9.125% of total rows for target value: 'e'
+      4.727% of total rows in data
+stalk-color-above-ring = o
+   Support:  The target has value: 'e' for 100.000% of the 192 remaining rows matching the rule
+   Coverage: The rule matches: 192 out of 2064 rows remaining for target value: 'e'. This is:
+      9.302% of remaining rows for target value: 'e'
+      4.563% of total rows for target value: 'e'
+      2.363% of total rows in data
+habitat = w
+   Support:  The target has value: 'e' for 100.000% of the 192 remaining rows matching the rule
+   Coverage: The rule matches: 192 out of 1872 rows remaining for target value: 'e'. This is:
+      10.256% of remaining rows for target value: 'e'
+      4.563% of total rows for target value: 'e'
+      2.363% of total rows in data
+population = n
+   Support:  The target has value: 'e' for 100.000% of the 144 remaining rows matching the rule
+   Coverage: The rule matches: 144 out of 1680 rows remaining for target value: 'e'. This is:
+      8.571% of remaining rows for target value: 'e'
+      3.422% of total rows for target value: 'e'
+      1.773% of total rows in data
+ring-type = f
+   Support:  The target has value: 'e' for 100.000% of the 48 remaining rows matching the rule
+   Coverage: The rule matches: 48 out of 1536 rows remaining for target value: 'e'. This is:
+      3.125% of remaining rows for target value: 'e'
+      1.141% of total rows for target value: 'e'
+      0.591% of total rows in data
+cap-shape = s
+   Support:  The target has value: 'e' for 100.000% of the 32 remaining rows matching the rule
+   Coverage: The rule matches: 32 out of 1488 rows remaining for target value: 'e'. This is:
+      2.151% of remaining rows for target value: 'e'
+      0.760% of total rows for target value: 'e'
+      0.394% of total rows in data
+odor = n AND stalk-shape = t
+   Support:  The target has value: 'e' for 100.000% of the 1152 remaining rows matching the rule
+   Coverage: The rule matches: 1152 out of 1456 rows remaining for target value: 'e'. This is:
+      79.121% of remaining rows for target value: 'e'
+      27.376% of total rows for target value: 'e'
+      14.180% of total rows in data
+ring-number = t AND spore-print-color = w
+   Support:  The target has value: 'e' for 100.000% of the 192 remaining rows matching the rule
+   Coverage: The rule matches: 192 out of 304 rows remaining for target value: 'e'. This is:
+      63.158% of remaining rows for target value: 'e'
+      4.563% of total rows for target value: 'e'
+      2.363% of total rows in data
+cap-color = c AND odor = n
+   Support:  The target has value: 'e' for 100.000% of the 24 remaining rows matching the rule
+   Coverage: The rule matches: 24 out of 112 rows remaining for target value: 'e'. This is:
+      21.429% of remaining rows for target value: 'e'
+      0.570% of total rows for target value: 'e'
+      0.295% of total rows in data
+odor = n AND stalk-root = e
+   Support:  The target has value: 'e' for 100.000% of the 64 remaining rows matching the rule
+   Coverage: The rule matches: 64 out of 88 rows remaining for target value: 'e'. This is:
+      72.727% of remaining rows for target value: 'e'
+      1.521% of total rows for target value: 'e'
+      0.788% of total rows in data
+gill-spacing = w AND cap-color = n
+   Support:  The target has value: 'e' for 100.000% of the 24 remaining rows matching the rule
+   Coverage: The rule matches: 24 out of 24 rows remaining for target value: 'e'. This is:
+      100.000% of remaining rows for target value: 'e'
+      0.570% of total rows for target value: 'e'
+      0.295% of total rows in data

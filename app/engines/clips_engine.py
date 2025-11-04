@@ -40,12 +40,12 @@ class CLIPSRulesEngine:
             raise FileNotFoundError(f"Rules file not found: {rules_file}")
 
         self.rules_file = rules_file
-        self.env = None
+        self.env: clips.Environment | None = None  # type: ignore
         self._initialize_clips()
 
     def _initialize_clips(self):
         """Initialize CLIPS environment and load rules."""
-        self.env = clips.Environment()
+        self.env = clips.Environment()  # type: ignore
 
         # Load the rules file
         try:
