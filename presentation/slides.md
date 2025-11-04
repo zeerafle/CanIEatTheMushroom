@@ -16,7 +16,7 @@ coverBackgroundUrl: https://images.unsplash.com/photo-1630286057323-905c2a21941f
 coverDate: 7.11.2025
 ---
 
-# Yiyebilir Mantar Uzman Sistemi
+# Yenebilir Mantar Uzman Sistemi
 
 ---
 
@@ -48,22 +48,33 @@ coverDate: 7.11.2025
 layout: fact
 ---
 
-# The Problem of Identifying Edible Mushroom with AI
+# YZ ile Yenebilir Mantar Tespiti Problemi
 
-Automating the edibility decision is essential because mushroom misidentification can cause __severe illness or death__, and consumer tests show that general __AI/photo ID apps__ still __misclassify dangerous species as edible__ at alarming rates. It is generally not advised to ask a generic AI directly whether a mushroom is edible; instead, __a constrained expert system__ with carefully crafted, auditable rules aligned with mycological best practice can gate decisions and __default to “not edible”__ when required features are missing or uncertain. <sup>5</sup>
+yenebilirlik kararının otomatikleştirilmesi kritiktir; çünkü mantarın yanlış tanımlanması __şiddetli hastalık veya ölüme__ yol açabilir ve tüketici testleri, genel amaçlı __Yapay Zeka (YZ)/fotoğraflı tanımlama uygulamalarının__ tehlikeli türleri hâlâ __yenebilir olarak yanlış sınıflandırdığını__ göstermektedir. Genel olarak, bir mantarın yenebilir olup olmadığını doğrudan genel bir YZ'ye sormak önerilmez; bunun yerine, mikolojik en iyi uygulamalarla uyumlu, dikkatle hazırlanmış ve denetlenebilir kurallara sahip __kısıtlanmış bir uzman sistem__ kararları sınırlandırabilir ve gerekli özellikler eksik veya belirsiz olduğunda __varsayılan olarak “yenebilir değil”__ sonucunu verebilir. <sup>5</sup>
 
 <Footnotes separator>
   <Footnote :number=5>Claypool, Public Citizen</Footnote>
 </Footnotes>
 
+<!--
+Automating the edibility decision is essential because mushroom misidentification can cause __severe illness or death__, and consumer tests show that general __AI/photo ID apps__ still __misclassify dangerous species as edible__ at alarming rates. It is generally not advised to ask a generic YZ directly whether a mushroom is edible; instead, __a constrained expert system__ with carefully crafted, auditable rules aligned with mycological best practice can gate decisions and __default to “not edible”__ when required features are missing or uncertain. <sup>5</sup>
+-->
+
 ---
 
 # Kural Tabanı Uzman Sistem
 
+- Kural tabanlı bir uzman sistem, __alan uzmanları__ tarafından yazılmış __IF‑THEN kurallarını__ kontrol ederek __karar veren__ bir yazılımdır; örneğin “IF gills are free AND a volva is present THEN flag as high risk.”
+- İki ana bölümden oluşur: <span v-mark.red="1">__bilgi tabanı (kurallar ve olgular)__</span> ve __çıkarım motoru__ (hangi kuralların uygulanacağını seçip sonuçları birleştiren kısım).
+- Her sonucun kullanılan kurallara ve girdilere geri izlenebilmesi sayesinde __denetlemek ve açıklamak kolaydır__, bu da şeffaflık ve güveni artırır.
+- Sınırlamalar arasında çok sayıda kuralı yakalama ve sürdürme çabası, uç durumları ve belirsizliği ele alma ve girdiler gürültülü veya eksik olduğunda olası kırılganlık sayılabilir.
+
+<!--
 - A rule-based expert system is software that __makes decisions__ by checking __IF‑THEN rules__ written by __domain experts__, like “IF gills are free AND a volva is present THEN flag as high risk.”
 - It has two main parts: <span v-mark.red="1">__a knowledge base (the rules and facts)__</span> and an __inference engine__ (the part that picks which rules apply and combines their conclusions).
 - It’s __easy to audit and explain__ because every conclusion points back to the exact rules and inputs used, improving transparency and trust.
 - Limitations include the effort to capture and maintain many rules, handling edge cases and uncertainty, and possible brittleness if inputs are noisy or incomplete.
+-->
 
 ---
 layout: two-cols
@@ -72,7 +83,7 @@ layoutClass: gap-16
 
 # Mantar Veri Seti
 
-"This data set includes descriptions of hypothetical samples corresponding to 23 species of gilled mushrooms in the Agaricus and Lepiota Family (pp. 500-525).  Each species is identified as definitely edible, definitely poisonous, or of unknown edibility and not recommended.  This latter class was combined with the poisonous one." <sup>6</sup>
+"Bu veri kümesi, Agaricus ve Lepiota familyalarındaki 23 solungaçlı mantar türüne karşılık gelen varsayımsal örneklerin açıklamalarını içerir (s. 500–525). Her tür kesinlikle yenebilir, kesinlikle zehirli veya yenebilirliği bilinmeyen ve önerilmeyen olarak tanımlanmıştır. Bu son sınıf, zehirli olanla birleştirilmiştir." <sup>6</sup>
 
 <Footnotes separator>
   <Footnote :number=6>
@@ -89,7 +100,10 @@ layoutClass: gap-16
 
 <!-- Currently i dont have the rules defined by domain experts.
 However, i have the data and i can infer the rules from the data by using
-PRISM algorithm -->
+PRISM algorithm
+
+"This data set includes descriptions of hypothetical samples corresponding to 23 species of gilled mushrooms in the Agaricus and Lepiota Family (pp. 500-525).  Each species is identified as definitely edible, definitely poisonous, or of unknown edibility and not recommended.  This latter class was combined with the poisonous one." <sup>6</sup>
+-->
 
 ---
 layout: image-right
@@ -97,31 +111,51 @@ image: ./images/prism_paper.png
 backgroundSize: contain
 ---
 
-# PRISM Algorithm
+# PRISM Algoritması
 
-PRISM is a rules-induction system first proposed by Cendrowska <sup>7</sup>.
+PRISM, ilk olarak Cendrowska tarafından önerilen bir kural indüksiyon sistemidir <sup>7</sup>.
 
-PRISM supports generating rules both to describe patterns within a table (in the form of associations between the features) and as a predictive model.
+PRISM, bir tabloda (özellikler arasındaki ilişkiler biçiminde) örüntüleri tanımlamak ve bir öngörücü model olarak kullanılmak üzere kurallar üretmeyi destekler.
 
-The rules produced are in disjunctive normal form (an OR of ANDs), with each individual rule being the AND of one or more terms, with each term of the form Feature = Value, for some Value within the values for that Feature.
+Üretilen kurallar ayrık normal formdadır (AND’lerin OR’u); her bir kural bir veya daha fazla terimin AND’i şeklindedir ve her terim Feature = Value biçimindedir; Value, ilgili özelliğin değerlerinden biridir.
 
 <Footnotes separator>
   <Footnote :number=7>Cendrowska (1987), 10.1016/S0020-7373(87)80003-2</Footnote>
 </Footnotes>
 
+<!--
+PRISM is a rules-induction system first proposed by Cendrowska <sup>7</sup>.
+
+PRISM supports generating rules both to describe patterns within a table (in the form of associations between the features) and as a predictive model.
+
+The rules produced are in disjunctive normal form (an OR of ANDs), with each individual rule being the AND of one or more terms, with each term of the form Feature = Value, for some Value within the values for that Feature.
+-->
+
 ---
 
-# PRISM Example
+# PRISM Örneği
 
-With PRISM here is the example rules inferred from the dataset:
-
+PRISM ile veri kümesinden çıkarılan örnek kurallar aşağıdadır:
 
 <<< @/snippets/rules.txt {*}{maxHeight:'300px'}
+
+<!--
+With PRISM here is the example rules inferred from the dataset:
+-->
 
 ---
 
 # CLIPS
 
+- CLIPS, aslen NASA/Lyndon B. Johnson Uzay Merkezi'nin Yazılım Teknolojisi Birimi (STB) tarafından geliştirilen bir uzman sistem aracıdır.
+- CLIPS, verileri ve kuralları tanımlamak için basit, tamamen parantezli bir sözdizimi kullanan ve gelen olguları eşleştirip eylemleri tetikleyen kural tabanlı bir dildir.
+- CLIPS'te bilgiyi temsil etmenin üç yolu vardır:
+  - _Kurallar_, ağırlıklı olarak deneyime dayalı sezgisel bilgi için kullanılır.
+  - _Deffunctions_ ve genel (generic) fonksiyonlar, ağırlıklı olarak işlemsel bilgi için kullanılır.
+  - _Nesne yönelimli programlama_ da ağırlıklı olarak işlemsel bilgi için kullanılır.
+- Her şey parantezler içinde yazılan bir 'construct'tur; yaygın yapılar veri için şablonlar ve mantık için kuralları içerir; satır düzeyinde noktalı virgül ile başlayan veya construct içinde isteğe bağlı tırnaklı dizeler olarak yer alan yorumlar bulunur.
+
+<!--
 - CLIPS is an expert system tool originally developed by the Software Technology Branch (STB), NASA/Lyndon B. Johnson Space Center. S
 - CLIPS is a rule-based language that uses a simple, fully parenthesized syntax to define data and rules, then matches incoming facts to fire actions.
 - There are three ways to represent knowledge in CLIPS:
@@ -129,17 +163,18 @@ With PRISM here is the example rules inferred from the dataset:
   - _Deffunctions_ and generic functions, which are primarily intended for procedural knowledge.
   - _Object-oriented programming_, also primarily intended for procedural knowledge.
 - Everything is a construct written in parentheses; common constructs include templates for data and rules for logic, and comments start with a semicolon at the line level or as an optional quoted string inside constructs.
+-->
 
 ---
 layout: two-cols
 level: 2
 ---
 
-# CLIPS Syntax
+# CLIPS Söz Dizimi
 
 
-- `deftemplate` defines a data schema (like a record) with named slots; facts then instantiate these templates, e.g., `(case (id 1) (odor f))` matches a template with slots id and odor.
-- `defrule` defines production rules with a Left-Hand Side (patterns to match) and a Right-Hand Side after => (actions to perform), and rules are named and may include an optional quoted comment.
+- `deftemplate`, adlandırılmış slot'lara sahip bir veri şemasını (kayıt gibi) tanımlar; olgular bu şablonları örnekler, örneğin `(case (id 1) (odor f))`, id ve odor slot'larına sahip bir şablonu eşleştirir.
+- `defrule`, Sol Taraf (LHS: eşleşecek kalıplar) ve `=>` sonrasında Sağ Taraf (RHS: yapılacak eylemler) ile üretim kurallarını tanımlar; kuralların isimleri vardır ve isteğe bağlı tırnaklı bir yorum içerebilirler.
 
 ::right::
 
@@ -184,16 +219,21 @@ level: 2
 ```
 ````
 
+<!--
+- `deftemplate` defines a data schema (like a record) with named slots; facts then instantiate these templates, e.g., `(case (id 1) (odor f))` matches a template with slots id and odor.
+- `defrule` defines production rules with a Left-Hand Side (patterns to match) and a Right-Hand Side after => (actions to perform), and rules are named and may include an optional quoted comment.
+-->
+
 ---
 layout: two-cols
 layoutClass: gap-16
 ---
 
-# CLIPS Syntax
+# CLIPS Söz Dizimi
 
-- The LHS contains pattern-matching expressions against facts; variables start with `?`, e.g., `?case-id` binds a value from a matched fact for reuse on the RHS.
-- The RHS executes functions when the LHS matches; common actions include assert to add new facts, retract to remove facts, and printout for output, enabling forward-chaining inference.
-- Strings are in double quotes, data types include integers, floats, symbols, strings, and external addresses; parentheses and balanced structure are mandatory for valid code.
+- LHS (sol taraf) olgulara karşı kalıp eşleme ifadelerini içerir; değişkenler `?` ile başlar, örneğin `?case-id` eşleşen bir olgudan bir değeri bağlar ve RHS'de yeniden kullanılır.
+- RHS (sağ taraf), LHS eşleştiğinde fonksiyonları yürütür; yaygın eylemler arasında yeni olgular eklemek için assert, olguları kaldırmak için retract ve çıktı için printout bulunur; bu da ileri zincirlemeyi etkinleştirir.
+- Dizeler çift tırnak içindedir; veri türleri arasında tamsayılar, kayan sayılar, semboller, dizeler ve dış adresler bulunur; geçerli kod için parantezler ve dengeli yapı zorunludur.
 
 ::right::
 
@@ -201,12 +241,18 @@ layoutClass: gap-16
 
 <<< @/../rules.CLP Clips {*}{maxHeight: '400px'}
 
+<!--
+- The LHS contains pattern-matching expressions against facts; variables start with `?`, e.g., `?case-id` binds a value from a matched fact for reuse on the RHS.
+- The RHS executes functions when the LHS matches; common actions include assert to add new facts, retract to remove facts, and printout for output, enabling forward-chaining inference.
+- Strings are in double quotes, data types include integers, floats, symbols, strings, and external addresses; parentheses and balanced structure are mandatory for valid code.
+-->
+
 ---
 
-# Building Web Application
+# Web Uygulaması Geliştirme
 
-- For building web application we use Python
-- We can bind the CLIPS inference engine to Python with `clipspy`
+- Web uygulamasını geliştirmek için Python kullanıyoruz.
+- CLIPS çıkarım motorunu Python’a `clipspy` ile bağlayabiliriz.
 
 ```python {*|1-3|4|6-10|12|14-17|*}
 import clips
@@ -228,21 +274,32 @@ for fact in env.facts():  # (facts)
         print(fact['target'])  # "poisonous"
 ```
 
+<!--
+- For building web application we use Python
+- We can bind the CLIPS inference engine to Python with `clipspy`
+-->
+
 ---
 level: 2
 layout: iframe-right
 url: http://localhost:3000/
 ---
 
-# Building Web Application
+# Web Uygulaması Geliştirme
 
+- Siteyi tamamen Python ile —hem backend hem de frontend— Reflex kütüphanesiyle geliştiriyoruz.
+- Görsel öznitelikleri otomatik olarak çıkarmak için YZ entegre ettik. Kullanımı isteğe bağlıdır.
+- [Web sitesine git](http://localhost:3000/)
+
+<!--
 - We use Reflex library to build both backend and frontend of the website entirely in python
-- We integrated AI to infer the visual attributes automatically. Optional to use.
+- We integrated YZ to infer the visual attributes automatically. Optional to use.
 - [To the website](http://localhost:3000/)
+-->
 
 ---
 layout: center
 class: text-center
 ---
 
-# Thank You
+# Dinlediğiniz İçin Teşekkür Ederim
