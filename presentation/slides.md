@@ -22,18 +22,27 @@ coverDate: 7.11.2025
 
 # Mantar
 
+- Mantarlar, miselyum adı verilen gizli ipliklerden büyüyen fungi'nin meyve veren kısımlarıdır; şapka, sap ve solungaçlar veya gözenekler gibi kısımlardan sporlar salarak yayılırlar <sup>1</sup>.
+- Türleri birbirinden ayırmak için solungaç yapısına, gövdede bir çanak veya halka olup olmadığına, spor izi rengine, kapak ve gövde detaylarına ve nerede büyüdüğüne bakın; bunların olgunlaştıkça değişebileceğini unutmayın <sup>2</sup>.
+- Bazı mantarlar gıda veya ilaçtır, bazıları ise zehirlidir; ölümcül benzerleri olduğu için güvenli tanımlama birden fazla eşleştirme özelliği ve uzman bakımı gerektirir <sup>1</sup>.
+- Mantarlar yemeklere zengin umami ve topraksı tatlar katar; kurutma işlemi şeflerin derinlik için kullandığı daha güçlü acı ve küf notalarını artırır <sup>3</sup>.
+- Mantarlar mutfak dışında da yararlı bileşikler sunar ve artık yetiştirme materyali toprağa ve çevreye yardımcı olmak için biyokömüre dönüştürülebilir <sup>4</sup>.
+
+<Footnotes separator>
+  <Footnote :number=1>Britannica Encyclopedia</Footnote>
+  <Footnote :number=2>Wikipedia</Footnote>
+  <Footnote :number=3>Chun, <i>et al.</i> 10.3390/foods9080980</Footnote>
+  <Footnote :number=4>Aiduang, <i>et al.</i> 10.3390/life15020317</Footnote>
+</Footnotes>
+
+<!--
+- Some mushrooms are food or medicine, others are poisonous; safe identification needs multiple matching features and expert care because deadly look‑alikes exist
 - Mushrooms are the fruiting parts of fungi that grow from hidden threads called mycelium; they spread by releasing spores from parts like the cap, stem, and gills or pores <sup>1</sup>.
 - To tell species apart, check gill attachment, a cup or ring on the stem, spore print color, cap and stem details, and where it’s growing, noting that these can change as it matures <sup>2</sup>.
 - Some mushrooms are food or medicine, others are poisonous; safe identification needs multiple matching features and expert care because deadly look‑alikes exist <sup>1</sup>.
 - In cooking, mushrooms add rich umami and earthy flavors; drying boosts stronger bitter and musty notes that chefs use for depth <sup>3</sup>.
 - Outside the kitchen, mushrooms offer useful compounds, and leftover growing material can be turned into biochar to help soils and the environment <sup>4</sup>.
-
-<Footnotes separator>
-  <Footnote :number=1>Britannica Encyclopedia</Footnote>
-  <Footnote :number=2>Wikipedia</Footnote>
-  <Footnote :number=3>Chun, <i>et al.</i>. doi: 10.3390/foods9080980</Footnote>
-  <Footnote :number=4>Aiduang, <i>et al.</i>. doi: 10.3390/life15020317</Footnote>
-</Footnotes>
+ -->
 
 ---
 layout: fact
