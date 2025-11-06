@@ -16,7 +16,7 @@ coverBackgroundUrl: https://images.unsplash.com/photo-1630286057323-905c2a21941f
 coverDate: 7.11.2025
 ---
 
-# Yenebilir Mantar Uzman Sistemi
+# Yenilebilir Mantar Uzman Sistemi
 
 ---
 
@@ -48,9 +48,9 @@ coverDate: 7.11.2025
 layout: fact
 ---
 
-# YZ ile Yenebilir Mantar Tespiti Problemi
+# YZ ile Yenilebilir Mantar Tespiti Problemi
 
-yenebilirlik kararının otomatikleştirilmesi kritiktir; çünkü mantarın yanlış tanımlanması __şiddetli hastalık veya ölüme__ yol açabilir ve tüketici testleri, genel amaçlı __Yapay Zeka (YZ)/fotoğraflı tanımlama uygulamalarının__ tehlikeli türleri hâlâ __yenebilir olarak yanlış sınıflandırdığını__ göstermektedir. Genel olarak, bir mantarın yenebilir olup olmadığını doğrudan genel bir YZ'ye sormak önerilmez; bunun yerine, mikolojik en iyi uygulamalarla uyumlu, dikkatle hazırlanmış ve denetlenebilir kurallara sahip __kısıtlanmış bir uzman sistem__ kararları sınırlandırabilir ve gerekli özellikler eksik veya belirsiz olduğunda __varsayılan olarak “yenebilir değil”__ sonucunu verebilir. <sup>5</sup>
+yenilebilirlik kararının otomatikleştirilmesi kritiktir; çünkü mantarın yanlış tanımlanması __şiddetli hastalık veya ölüme__ yol açabilir ve tüketici testleri, genel amaçlı __Yapay Zeka (YZ)/fotoğraflı tanımlama uygulamalarının__ tehlikeli türleri hâlâ __yenilebilir olarak yanlış sınıflandırdığını__ göstermektedir. Genel olarak, bir mantarın yenilebilir olup olmadığını doğrudan genel bir YZ'ye sormak önerilmez; bunun yerine, mikolojik en iyi uygulamalarla uyumlu, dikkatle hazırlanmış ve denetlenebilir kurallara sahip __kısıtlanmış bir uzman sistem__ kararları sınırlandırabilir ve gerekli özellikler eksik veya belirsiz olduğunda __varsayılan olarak “yenilebilir değil”__ sonucunu verebilir. <sup>5</sup>
 
 <Footnotes separator>
   <Footnote :number=5>Claypool, Public Citizen</Footnote>
@@ -83,7 +83,7 @@ layoutClass: gap-16
 
 # Mantar Veri Seti
 
-"Bu veri kümesi, Agaricus ve Lepiota familyalarındaki 23 solungaçlı mantar türüne karşılık gelen varsayımsal örneklerin açıklamalarını içerir (s. 500–525). Her tür kesinlikle yenebilir, kesinlikle zehirli veya yenebilirliği bilinmeyen ve önerilmeyen olarak tanımlanmıştır. Bu son sınıf, zehirli olanla birleştirilmiştir." <sup>6</sup>
+"Bu veri kümesi, Agaricus ve Lepiota familyalarındaki 23 solungaçlı mantar türüne karşılık gelen varsayımsal örneklerin açıklamalarını içerir (s. 500–525). Her tür kesinlikle yenilebilir, kesinlikle zehirli veya yenilebilirliği bilinmeyen ve önerilmeyen olarak tanımlanmıştır. Bu son sınıf, zehirli olanla birleştirilmiştir." <sup>6</sup>
 
 <Footnotes separator>
   <Footnote :number=6>
