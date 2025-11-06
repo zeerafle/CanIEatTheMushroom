@@ -16,3 +16,8 @@ wheels/
 
 # Environment variables (API keys, etc.)
 .env
+
+# presentation folder
+**/node_modules
+**/.env
+**/clips.tmLanguage.json

@@ -7,18 +7,18 @@ def result_display() -> rx.Component:
     """Display the final result."""
     return rx.card(
         rx.vstack(
-            rx.heading("🍄 Result", size="7"),
+            rx.heading(MushroomExpertState.ui_result_title, size="7"),
             rx.cond(
                 MushroomExpertState.prediction == "edible",
                 rx.vstack(
                     rx.callout(
-                        "This mushroom is likely EDIBLE! ✅",
+                        MushroomExpertState.ui_result_edible,
                         icon="circle-check",
                         color="green",
                         size="3",
                     ),
                     rx.text(
-                        f"Matched rule: {MushroomExpertState.matched_rule}",
+                        MushroomExpertState.ui_result_matched_rule,
                         size="2",
                         color="gray",
                     ),
@@ -28,20 +28,20 @@ def result_display() -> rx.Component:
                     MushroomExpertState.prediction == "poisonous",
                     rx.vstack(
                         rx.callout(
-                            "This mushroom is likely POISONOUS! ⚠️",
+                            MushroomExpertState.ui_result_poisonous,
                             icon="triangle-alert",
                             color="red",
                             size="3",
                         ),
                         rx.text(
-                            f"Matched rule: {MushroomExpertState.matched_rule}",
+                            MushroomExpertState.ui_result_matched_rule,
                             size="2",
                             color="gray",
                         ),
                         spacing="2",
                     ),
                     rx.callout(
-                        "Could not determine if this mushroom is safe.",
+                        MushroomExpertState.ui_result_unknown,
                         icon="circle-help",
                         color="orange",
                         size="3",
@@ -50,12 +50,12 @@ def result_display() -> rx.Component:
             ),
             rx.divider(margin_top="20px", margin_bottom="20px"),
             rx.text(
-                MushroomExpertState.get_progress,
+                MushroomExpertState.ui_progress,
                 size="2",
                 color="gray",
             ),
             rx.button(
-                "Start Over",
+                MushroomExpertState.ui_button_start_over,
                 on_click=MushroomExpertState.reset_form,
                 size="3",
                 margin_top="20px",

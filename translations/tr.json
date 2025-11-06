@@ -1,0 +1,215 @@
+{
+  "app": {
+    "title": "Bu Mantarı Yiyebilir miyim? 🍄",
+    "subtitle": "Mantarın yenilebilir veya zehirli olduğunu belirlemek için soruları cevaplayın.",
+    "page_title": "Bu Mantarı Yiyebilir miyim"
+  },
+  "image_upload": {
+    "section_title": "🤖 Yapay Zeka ile Hızlı Doldurun (İsteğe Bağlı)",
+    "section_description": "Yapay zeka görüşü kullanarak görünür özellikleri otomatik olarak doldurmak için mantarın fotoğrafını yükleyin.",
+    "button_upload": "Resim Seç",
+    "drag_and_drop": "Sürükle bırak veya yüklemek için tıkla",
+    "button_analyze": "Resmi Analiz Et",
+    "analysis_complete": "Resim analiz edildi! {count} özellik bulundu",
+    "ai_suggestions": "Yapay Zeka Önerileri:",
+    "button_apply": "Uygula",
+    "button_apply_all": "Tümünü Uygula",
+    "button_upload_different": "Farklı Resim Yükle",
+    "suggestions_applied": "Yapay zeka önerileri uygulandı!",
+    "fill_remaining": "Sonucunuzu almak için lütfen aşağıdaki kalan soruları doldurun.",
+    "error_could_not_analyze": "Resim analiz edilemedi. Lütfen soruları manuel olarak cevaplayın."
+  },
+  "question_form": {
+    "ai_suggestion_available": "Bu soru için yapay zeka önerisi mevcut",
+    "button_autofill": "Yapay Zeka'dan Otomatik Doldur",
+    "button_submit": "Cevabı Gönder",
+    "progress": "Cevaplanan sorular: {count}"
+  },
+  "result": {
+    "title": "🍄 Sonuç",
+    "edible": "Bu mantar muhtemelen YENİLEBİLİR! ✅",
+    "poisonous": "Bu mantar muhtemelen ZEHİRLİ! ⚠️",
+    "unknown": "Bu mantarın güvenli olup olmadığı belirlenemedi.",
+    "matched_rule": "Eşleşen kural: {rule}",
+    "button_start_over": "Baştan Başla"
+  },
+  "attributes": {
+    "odor": {
+      "question": "Mantarın kokusu nedir?",
+      "description": "Mantarın nasıl koktuğu: badem/anason gibi, katran/kimyasal, balık, kötü, küflü, koku yok, keskin/buruk veya baharatlı. Örnek: Bazı yenilebilir Agaricus badem veya anason gibi hoş kokar; bazı zehirliler kötü veya keskin buruk kokar.",
+      "options": {
+        "a": "Badem",
+        "l": "Anason",
+        "c": "Kreozot",
+        "f": "Kötü",
+        "m": "Küflü",
+        "n": "Yok",
+        "p": "Buruk",
+        "s": "Baharatlı",
+        "y": "Balık"
+      }
+    },
+    "gill_color": {
+      "question": "Solungaç rengi nedir?",
+      "description": "Şapkanın altındaki solungaçların rengi. Örnek: Agaricus solungaçları genellikle pembe başlar ve olgunlaştıkça çikolata-kahverengi olur.",
+      "options": {
+        "b": "Açık sarı",
+        "n": "Kahverengi",
+        "g": "Gri",
+        "p": "Pembe",
+        "w": "Beyaz",
+        "h": "Çikolata",
+        "u": "Mor",
+        "e": "Kırmızı",
+        "y": "Sarı",
+        "o": "Turuncu",
+        "k": "Siyah"
+      }
+    },
+    "spore_print_color": {
+      "question": "Spor izi rengi nedir?",
+      "description": "Şapkayı solungaçları aşağıya gelecek şekilde kağıda koyarsanız, sporlar renkli bir 'iz' bırakır (siyah, kahverengi, çikolata, beyaz, sarı, vb.). Örnek: Agaricus tipik olarak çikolata-kahverengi spor izine sahiptir; birçok Russula beyaz izlere sahiptir.",
+      "options": {
+        "w": "Beyaz",
+        "n": "Kahverengi",
+        "k": "Siyah",
+        "h": "Çikolata",
+        "r": "Yeşil",
+        "o": "Turuncu",
+        "u": "Mor",
+        "y": "Sarı",
+        "b": "Açık sarı"
+      }
+    },
+    "stalk_color_below_ring": {
+      "question": "Halkanın altındaki sap rengi nedir?",
+      "description": "Halkanın altındaki sapın rengi. Örnek: Bir sap halkanın üstünde beyaz ve altında kahverengi olabilir.",
+      "options": {
+        "w": "Beyaz",
+        "p": "Pembe",
+        "g": "Gri",
+        "n": "Kahverengi",
+        "b": "Açık sarı",
+        "e": "Kırmızı",
+        "y": "Sarı",
+        "o": "Turuncu",
+        "c": "Tarçın"
+      }
+    },
+    "stalk_color_above_ring": {
+      "question": "Halkanın üstündeki sap rengi nedir?",
+      "description": "Halkanın üstündeki sapın rengi. Örnek: Beyaz üst sap beyaz kalır; bazı türlerin halkasının üstünde sarımsı renk vardır.",
+      "options": {
+        "w": "Beyaz",
+        "p": "Pembe",
+        "g": "Gri",
+        "n": "Kahverengi",
+        "b": "Açık sarı",
+        "e": "Kırmızı",
+        "y": "Sarı",
+        "o": "Turuncu",
+        "c": "Tarçın"
+      }
+    },
+    "stalk_root": {
+      "question": "Sap kökü tipi nedir?",
+      "description": "Sapın en altının (toprakta) neye benzediği: bir soğan, bir sopa şekli, bir fincan, eşit genişlik, kök benzeri iplikler veya sivri bir 'kök'. Bazen bilinmez. Örnek: Bazı Amanita'nın tabanında yuvarlak bir soğan vardır.",
+      "options": {
+        "b": "Soğansı",
+        "c": "Sopa",
+        "e": "Eşit",
+        "r": "Köklü",
+        "MISSING": "Eksik/Görünmüyor"
+      }
+    },
+    "population": {
+      "question": "Popülasyon nedir?",
+      "description": "Mantarların bir alanda nasıl büyüdüğü: çok yaygın, bir noktadan küme halinde, çok sayıda, etrafta dağınık, birkaç tanesi bir arada veya tek ve yalnız. Örnek: Aynı tabandan sıkı bir demet 'kümelenmiş'tir; burada ve orada bir tane 'yalnız'dır.",
+      "options": {
+        "a": "Bol",
+        "c": "Kümelenmiş",
+        "n": "Çok sayıda",
+        "s": "Dağınık",
+        "v": "Birkaç",
+        "y": "Yalnız"
+      }
+    },
+    "habitat": {
+      "question": "Habitat nedir?",
+      "description": "Nerede büyüyor: çimenler/çimen, yaprak altlığı, çayırlar, yollar, şehir yerleri, atık alanlar veya ormanlar. Örnek: Çimende 'çimen'; ormanda 'orman'.",
+      "options": {
+        "d": "Orman",
+        "g": "Çimenler",
+        "l": "Yapraklar",
+        "m": "Çayırlar",
+        "p": "Yollar",
+        "u": "Kentsel",
+        "w": "Atık"
+      }
+    },
+    "ring_type": {
+      "question": "Halka tipi nedir?",
+      "description": "Halkanın neye benzediği: örümcek ağı gibi, kaybolur, dışa doğru genişler, büyük, yok, etek gibi asılı, kın gibi veya sadece renkli bir bant. Örnek: Asılı duran etek benzeri bir halka 'sarkan'dır; basit bir renk bandı bir 'bölge'dir.",
+      "options": {
+        "e": "Geçici",
+        "f": "Genişleyen",
+        "l": "Büyük",
+        "n": "Yok",
+        "p": "Sarkan"
+      }
+    },
+    "ring_number": {
+      "question": "Kaç halka var?",
+      "description": "Saptaki halka sayısı: yok, bir veya iki. Örnek: Marketten alınan Agaricus genellikle bir halkaya sahiptir; bazı türlerin halkası yoktur",
+      "options": {
+        "n": "Yok",
+        "o": "Bir",
+        "t": "İki"
+      }
+    },
+    "cap_shape": {
+      "question": "Şapka şekli nedir?",
+      "description": "Mantarın üstü yandan nasıl görünüyor: bir çan gibi, bir koni, bir kubbe, düz, küçük bir tümsek ile veya ortada çökük. Örnek: Tipik bir market mantar mantarı kubbe şeklindedir; olgun bir şemsiye düz görünebilir.",
+      "options": {
+        "b": "Çan",
+        "c": "Konik",
+        "x": "Dışbükey",
+        "f": "Düz",
+        "k": "Tümsekli",
+        "s": "Çökük"
+      }
+    },
+    "cap_color": {
+        "question": "Kapak rengi nedir?",
+        "description": "Kapağın ana rengi (örn. kahverengi, beyaz, sarı, kırmızı, gri, pembe vb.). Örnek: Düğme mantarı kapakları genellikle beyazdır; birçok tarla mantarı kahverengidir",
+        "options": {
+            "n": "Kahverengi",
+            "b": "Açık sarı",
+            "c": "Tarçın",
+            "g": "Gri",
+            "r": "Yeşil",
+            "p": "Pembe",
+            "u": "Mor",
+            "e": "Kırmızı",
+            "w": "Beyaz",
+            "y": "Sarı"
+        }
+    },
+    "stalk_shape": {
+        "question": "Sap şekli nedir?",
+        "description": "Sapın tabana doğru genişleyip genişlemediği veya tabana doğru daralıp daralmadığı. Örnek: Dibe yakın şişen sopa benzeri bir sap 'tabanda daha geniştir'; dibe doğru incelen bir sap ise 'tabanda daha dardır'.",
+        "options": {
+            "e": "Büyütme",
+            "t": "Konikleştirme"
+        }
+    },
+    "gill_spacing": {
+        "question": "Solungaç aralığı nedir?",
+        "description": "Şapka altında solungaçların ne kadar sıkı olduğu: sıkı/yoğun veya daha seyrek. Örnek: Mağaza mantarları genellikle yoğun solungaçlara sahiptir; bazı yabani mantarların solungaçları daha seyrek olabilir",
+        "options": {
+            "c": "Sıkı",
+            "w": "Yoğun"
+        }
+    }
+  }
+}

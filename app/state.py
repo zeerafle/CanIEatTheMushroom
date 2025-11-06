@@ -4,8 +4,9 @@ from typing import Any
 
 import reflex as rx
 
-from .attributes import get_attribute_info
+from .attributes import get_attribute_info, get_attribute_info_i18n
 from .engines.clips_engine import CLIPSRulesEngine
+from .i18n import I18nState, load_translations
 from .services.llm_vision import get_llm_vision_service
 
 # Module-level singleton engine
@@ -20,7 +21,7 @@ except Exception as e:
     _clips_engine = RulesEngine()
 
 
-class MushroomExpertState(rx.State):
+class MushroomExpertState(I18nState):
     """State for the mushroom expert system using CLIPS."""
 
     # Current answers
@@ -47,6 +48,9 @@ class MushroomExpertState(rx.State):
 
     def on_load(self):
         """Initialize state on page load."""
+        # Load i18n
+        self.on_load_i18n()
+
         llm_service = get_llm_vision_service()
         self.llm_enabled = llm_service.is_enabled()
 
@@ -121,6 +125,7 @@ class MushroomExpertState(rx.State):
                 if next_attr:
                     self.current_attribute = next_attr
 
+    @rx.event
     def apply_all_llm_suggestions(self):
         """Apply all LLM suggestions at once."""
         if not self.llm_suggestions:
@@ -163,6 +168,7 @@ class MushroomExpertState(rx.State):
                 )
                 self.is_complete = True
 
+    @rx.event
     def clear_llm_suggestions(self):
         """Clear LLM suggestions and uploaded image."""
         self.llm_suggestions = {}
@@ -170,6 +176,7 @@ class MushroomExpertState(rx.State):
         self.llm_error = ""
         self.llm_suggestions_applied = False
 
+    @rx.event
     def handle_answer(self, form_data: dict[str, Any]):
         """Handle form submission with an answer (matches form component call)."""
         print("\n📝 handle_answer called")
@@ -226,6 +233,7 @@ class MushroomExpertState(rx.State):
     # Alias for compatibility
     handle_submit = handle_answer
 
+    @rx.event
     def reset_form(self):
         """Reset the expert system to start over."""
         print("\n🔄 Resetting form...")
@@ -247,7 +255,7 @@ class MushroomExpertState(rx.State):
     def get_current_question(self) -> str:
         """Get the current question text."""
         if self.current_attribute:
-            attr_info = get_attribute_info(self.current_attribute)
+            attr_info = get_attribute_info_i18n(self.current_attribute, self.t)
             return attr_info["question"]
         return ""
 
@@ -255,7 +263,7 @@ class MushroomExpertState(rx.State):
     def get_current_options(self) -> list[tuple[str, str]]:
         """Get options for the current question."""
         if self.current_attribute:
-            attr_info = get_attribute_info(self.current_attribute)
+            attr_info = get_attribute_info_i18n(self.current_attribute, self.t)
             return attr_info["options"]
         return []
 
@@ -263,7 +271,7 @@ class MushroomExpertState(rx.State):
     def get_current_description(self) -> str:
         """Get the description for the current attribute."""
         if self.current_attribute:
-            attr_info = get_attribute_info(self.current_attribute)
+            attr_info = get_attribute_info_i18n(self.current_attribute, self.t)
             return attr_info.get("description", "")
         return ""
 
@@ -282,3 +290,100 @@ class MushroomExpertState(rx.State):
     def get_llm_suggestions_count(self) -> int:
         """Get the number of LLM suggestions."""
         return len(self.llm_suggestions)
+
+    # UI Text Translations
+    @rx.var
+    def ui_app_title(self) -> str:
+        return self.t("app.title")
+
+    @rx.var
+    def ui_app_subtitle(self) -> str:
+        return self.t("app.subtitle")
+
+    @rx.var
+    def ui_image_upload_title(self) -> str:
+        return self.t("image_upload.section_title")
+
+    @rx.var
+    def ui_image_upload_desc(self) -> str:
+        return self.t("image_upload.section_description")
+
+    @rx.var
+    def ui_button_upload(self) -> str:
+        return self.t("image_upload.button_upload")
+
+    @rx.var
+    def ui_drag_and_drop(self) -> str:
+        return self.t("image_upload.drag_and_drop")
+
+    @rx.var
+    def ui_button_analyze(self) -> str:
+        return self.t("image_upload.button_analyze")
+
+    @rx.var
+    def ui_analysis_complete(self) -> str:
+        return self.t("image_upload.analysis_complete", count=self.get_llm_suggestions_count)
+
+    @rx.var
+    def ui_ai_suggestions(self) -> str:
+        return self.t("image_upload.ai_suggestions")
+
+    @rx.var
+    def ui_button_apply(self) -> str:
+        return self.t("image_upload.button_apply")
+
+    @rx.var
+    def ui_button_apply_all(self) -> str:
+        return self.t("image_upload.button_apply_all")
+
+    @rx.var
+    def ui_button_upload_different(self) -> str:
+        return self.t("image_upload.button_upload_different")
+
+    @rx.var
+    def ui_suggestions_applied(self) -> str:
+        return self.t("image_upload.suggestions_applied")
+
+    @rx.var
+    def ui_fill_remaining(self) -> str:
+        return self.t("image_upload.fill_remaining")
+
+    @rx.var
+    def ui_ai_suggestion_available(self) -> str:
+        return self.t("question_form.ai_suggestion_available")
+
+    @rx.var
+    def ui_button_autofill(self) -> str:
+        return self.t("question_form.button_autofill")
+
+    @rx.var
+    def ui_button_submit(self) -> str:
+        return self.t("question_form.button_submit")
+
+    @rx.var
+    def ui_progress(self) -> str:
+        return self.t("question_form.progress", count=self.get_answered_count)
+
+    @rx.var
+    def ui_result_title(self) -> str:
+        return self.t("result.title")
+
+    @rx.var
+    def ui_result_edible(self) -> str:
+        return self.t("result.edible")
+
+    @rx.var
+    def ui_result_poisonous(self) -> str:
+        return self.t("result.poisonous")
+
+    @rx.var
+    def ui_result_unknown(self) -> str:
+        return self.t("result.unknown")
+
+    @rx.var
+    def ui_result_matched_rule(self) -> str:
+        return self.t("result.matched_rule", rule=self.matched_rule)
+
+    @rx.var
+    def ui_button_start_over(self) -> str:
+        return self.t("result.button_start_over")

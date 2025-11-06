@@ -12,12 +12,12 @@ def image_upload_section() -> rx.Component:
         rx.card(
             rx.vstack(
                 rx.heading(
-                    "🤖 Quick Fill with AI (Optional)",
+                    MushroomExpertState.ui_image_upload_title,
                     size="5",
                     margin_bottom="10px",
                 ),
                 rx.text(
-                    "Upload a photo of the mushroom to automatically fill in visible attributes using AI vision.",
+                    MushroomExpertState.ui_image_upload_desc,
                     size="2",
                     color="gray",
                     margin_bottom="15px",
@@ -30,12 +30,12 @@ def image_upload_section() -> rx.Component:
                             rx.vstack(
                                 rx.button(
                                     rx.icon("upload", size=20),
-                                    "Choose Image",
+                                    MushroomExpertState.ui_button_upload,
                                     size="3",
                                     variant="soft",
                                 ),
                                 rx.text(
-                                    "Drag and drop or click to upload",
+                                    MushroomExpertState.ui_drag_and_drop,
                                     size="2",
                                     color="gray",
                                 ),
@@ -58,9 +58,9 @@ def image_upload_section() -> rx.Component:
                         ),
                         rx.cond(
                             MushroomExpertState.get_analyzing_status,
-                            rx.button("Analyze Image", loading=True, size="2"),
+                            rx.button(MushroomExpertState.ui_button_analyze, loading=True, size="2"),
                             rx.button(
-                                "Analyze Image",
+                                MushroomExpertState.ui_button_analyze,
                                 on_click=lambda: MushroomExpertState.handle_image_upload(
                                     rx.upload_files(upload_id="mushroom_image_upload")
                                 ),
@@ -75,9 +75,7 @@ def image_upload_section() -> rx.Component:
                         rx.hstack(
                             rx.icon("check-circle", color="green", size=20),
                             rx.text(
-                                "Image analyzed! Found ",
-                                MushroomExpertState.get_llm_suggestions_count,
-                                " attributes",
+                                MushroomExpertState.ui_analysis_complete,
                                 size="3",
                                 weight="bold",
                                 color="green",
@@ -90,7 +88,7 @@ def image_upload_section() -> rx.Component:
                             ~MushroomExpertState.llm_suggestions_applied,
                             rx.vstack(
                                 rx.text(
-                                    "AI Suggestions:",
+                                    MushroomExpertState.ui_ai_suggestions,
                                     size="3",
                                     weight="bold",
                                     margin_top="10px",
@@ -120,7 +118,7 @@ def image_upload_section() -> rx.Component:
                                                 ),
                                                 rx.spacer(),
                                                 rx.button(
-                                                    "Apply",
+                                                    MushroomExpertState.ui_button_apply,
                                                     size="1",
                                                     variant="soft",
                                                     on_click=MushroomExpertState.apply_llm_suggestion(
@@ -138,16 +136,16 @@ def image_upload_section() -> rx.Component:
                                 ),
                                 rx.hstack(
                                     rx.button(
-                                        "Apply All Suggestions",
+                                        MushroomExpertState.ui_button_apply_all,
                                         size="2",
-                                        on_click=MushroomExpertState.apply_all_llm_suggestions(),
+                                        on_click=MushroomExpertState.apply_all_llm_suggestions,
                                         variant="solid",
                                     ),
                                     rx.button(
-                                        "Upload Different Image",
+                                        MushroomExpertState.ui_button_upload_different,
                                         size="2",
                                         variant="outline",
-                                        on_click=MushroomExpertState.clear_llm_suggestions(),
+                                        on_click=MushroomExpertState.clear_llm_suggestions,
                                     ),
                                     spacing="2",
                                     width="100%",
@@ -164,7 +162,7 @@ def image_upload_section() -> rx.Component:
                                         rx.hstack(
                                             rx.icon("check-circle-2", size=20),
                                             rx.text(
-                                                "AI suggestions applied!",
+                                                MushroomExpertState.ui_suggestions_applied,
                                                 size="3",
                                                 weight="bold",
                                             ),
@@ -173,7 +171,7 @@ def image_upload_section() -> rx.Component:
                                         rx.cond(
                                             ~MushroomExpertState.is_complete,
                                             rx.text(
-                                                "Please fill in the remaining questions below to get your result.",
+                                                MushroomExpertState.ui_fill_remaining,
                                                 size="2",
                                                 margin_top="5px",
                                             ),
@@ -186,7 +184,7 @@ def image_upload_section() -> rx.Component:
                                     margin_top="10px",
                                 ),
                                 rx.button(
-                                    "Upload Different Image",
+                                    MushroomExpertState.ui_button_upload_different,
                                     size="2",
                                     variant="outline",
                                     on_click=MushroomExpertState.clear_llm_suggestions(),
