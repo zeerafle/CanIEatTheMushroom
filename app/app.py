@@ -3,17 +3,46 @@ import reflex as rx
 from .components.image_upload import image_upload_section
 from .components.question_form import question_form
 from .components.result_display import result_display
+from .i18n import AVAILABLE_LANGUAGES
 from .state import MushroomExpertState
+
+
+def language_selector() -> rx.Component:
+    """Language selector dropdown."""
+    return rx.hstack(
+        rx.text("Language:", size="2", weight="medium"),
+        rx.select.root(
+            rx.select.trigger(placeholder=MushroomExpertState.locale.upper()),
+            rx.select.content(
+                rx.foreach(
+                    MushroomExpertState.get_available_languages,
+                    lambda lang: rx.select.item(lang[1], value=lang[0]),
+                ),
+            ),
+            value=MushroomExpertState.locale,
+            on_change=MushroomExpertState.set_locale,
+        ),
+        spacing="2",
+        align="center",
+    )
 
 
 def index() -> rx.Component:
     """Main page of the mushroom expert system."""
     return rx.container(
-        rx.color_mode.button(position="top-right"),
+        rx.hstack(
+            rx.color_mode.button(position="top-right"),
+            language_selector(),
+            position="absolute",
+            top="20px",
+            right="20px",
+            spacing="4",
+            z_index="100",
+        ),
         rx.vstack(
-            rx.heading("Can I Eat The Mushroom? 🍄", size="9"),
+            rx.heading(MushroomExpertState.ui_app_title, size="9"),
             rx.text(
-                "Answer questions about the mushroom to determine if it's edible or poisonous.",
+                MushroomExpertState.ui_app_subtitle,
                 size="4",
                 color="gray",
                 margin_bottom="30px",

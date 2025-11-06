@@ -1,12 +1,65 @@
 """Mushroom attribute definitions and options."""
 
-from typing import TypedDict
+from typing import Callable, TypedDict
 
 
 class AttributeInfo(TypedDict):
     question: str
     description: str
     options: list[tuple[str, str]]
+
+
+def get_attribute_info_i18n(attr_name: str, t_func: Callable) -> AttributeInfo:
+    """Get translated attribute info using a translation function.
+
+    Args:
+        attr_name: The attribute name (e.g., "odor", "gill_color")
+        t_func: Translation function that takes a key and returns translated text
+
+    Returns:
+        AttributeInfo with translated question, description, and options
+    """
+    # Get the question and description
+    question = t_func(f"attributes.{attr_name}.question")
+    description = t_func(f"attributes.{attr_name}.description")
+
+    # Get the options - we need to get all possible option codes for this attribute
+    # and translate each one
+    option_codes = get_attribute_option_codes(attr_name)
+    options = []
+    for code in option_codes:
+        translated_label = t_func(f"attributes.{attr_name}.options.{code}")
+        options.append((code, translated_label))
+
+    return {
+        "question": question,
+        "description": description,
+        "options": options,
+    }
+
+
+def get_attribute_option_codes(attr_name: str) -> list[str]:
+    """Get the list of valid option codes for an attribute.
+
+    This is used to know which options to translate from the JSON files.
+    """
+    attribute_options = {
+        "odor": ["a", "l", "c", "f", "m", "n", "p", "s", "y"],
+        "gill_color": ["b", "n", "g", "p", "w", "h", "u", "e", "y", "o", "k"],
+        "spore_print_color": ["w", "n", "k", "h", "r", "o", "u", "y", "b"],
+        "stalk_color_below_ring": ["w", "p", "g", "n", "b", "e", "y", "o", "c"],
+        "stalk_color_above_ring": ["w", "p", "g", "n", "b", "e", "y", "o", "c"],
+        "stalk_root": ["b", "c", "e", "r", "MISSING"],
+        "population": ["a", "c", "n", "s", "v", "y"],
+        "habitat": ["d", "g", "l", "m", "p", "u", "w"],
+        "ring_type": ["e", "f", "l", "n", "p"],
+        "ring_number": ["n", "o", "t"],
+        "cap_shape": ["b", "c", "x", "f", "k", "s"],
+        "cap_color": ["n", "b", "c", "g", "r", "p", "u", "e", "w", "y"],
+        "stalk_shape": ["e", "t"],
+        "gill_spacing": ["c", "w"],
+    }
+    return attribute_options.get(attr_name, [])
 
 
 # Attribute display names and their possible values

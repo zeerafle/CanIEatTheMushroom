@@ -20,11 +20,11 @@ def question_form() -> rx.Component:
                 rx.callout(
                     rx.hstack(
                         rx.text(
-                            "AI suggestion available for this question",
+                            MushroomExpertState.ui_ai_suggestion_available,
                             size="2",
                         ),
                         rx.button(
-                            "Auto-fill from AI",
+                            MushroomExpertState.ui_button_autofill,
                             size="1",
                             variant="soft",
                             on_click=lambda _: MushroomExpertState.apply_llm_suggestion(
@@ -56,7 +56,7 @@ def question_form() -> rx.Component:
                             spacing="3",
                         ),
                         rx.button(
-                            "Submit Answer",
+                            MushroomExpertState.ui_button_submit,
                             type="submit",
                             size="3",
                             margin_top="20px",
@@ -82,7 +82,7 @@ def question_form() -> rx.Component:
             ),
             rx.divider(margin_top="20px", margin_bottom="20px"),
             rx.text(
-                MushroomExpertState.get_progress,
+                MushroomExpertState.ui_progress,
                 size="2",
                 color="gray",
             ),
