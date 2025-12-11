@@ -11,6 +11,7 @@ dependencies = [
     "google-genai>=1.47.0",
     "pillow>=10.0.0",
     "python-dotenv>=1.2.1",
+    "reflex-hosting-cli>=0.1.58",
 ]
 
 [dependency-groups]

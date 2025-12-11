@@ -1,0 +1,6 @@
+name: CanIEatTheMushroom
+
+hostname: canieatthemushroom
+envfile: .env
+
+vmtype: c1m2

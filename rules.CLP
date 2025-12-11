@@ -220,4 +220,3 @@
   )
   =>
   (assert (conclusion (id ?case-id) (target "edible") (rule edible_gill_spacing_w_cap_color_n))))
-
