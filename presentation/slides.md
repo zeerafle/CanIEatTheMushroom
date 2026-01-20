@@ -342,14 +342,14 @@ for fact in env.facts():  # (facts)
 ---
 level: 2
 layout: iframe-right
-url: http://localhost:3000/
+url: https://canieatthemushroom.reflex.run/
 ---
 
 # Web Uygulaması Geliştirme
 
 - Siteyi tamamen Python ile —hem backend hem de frontend— Reflex kütüphanesiyle geliştiriyoruz.
 - Görsel öznitelikleri otomatik olarak çıkarmak için YZ entegre ettik. Kullanımı isteğe bağlıdır.
-- [Web sitesine git](http://localhost:3000/)
+- [Web sitesine git](https://canieatthemushroom.reflex.run/)
 
 <!--
 - We use Reflex library to build both backend and frontend of the website entirely in python
