@@ -24,6 +24,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Download CLIPS grammar
+        working-directory: ./presentation/setup
+        run: |
+          curl -o clips.tmLanguage.json https://raw.githubusercontent.com/nerg/clips-lang/refs/heads/master/syntaxes/clips.tmLanguage.json
+
       - name: Install dependencies
         working-directory: ./presentation
         run: npm install
