@@ -35,7 +35,11 @@ jobs:
 
       - name: Build
         working-directory: ./presentation
-        run: npx slidev build --base /canieatthemushroom/
+        run: npx slidev build --base /CanIEatTheMushroom/
+
+      - name: Add .nojekyll file
+        working-directory: ./presentation/dist
+        run: touch .nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:
