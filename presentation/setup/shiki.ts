@@ -1,5 +1,5 @@
 import { defineShikiSetup } from '@slidev/types'
-import clipsGrammar from '/home/zeerafle/.vscode/extensions/nerg.clips-lang-1.0.4/syntaxes/clips.tmLanguage.json'
+import clipsGrammar from './clips.tmLanguage.json'
 
 export default defineShikiSetup(() => {
   return {
