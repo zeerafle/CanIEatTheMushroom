@@ -96,13 +96,13 @@
 ; Edible rules
 ; --------------------------
 
-(defrule edible_stalk_color_above_ring_g
-  "Edible: stalk_color_above_ring=g"
+(defrule edible_stalk_color_below_ring_g
+  "Edible: stalk_color_below_ring=g"
   (case (id ?case-id)
-        (stalk_color_above_ring g)
+        (stalk_color_below_ring g)
   )
   =>
-  (assert (conclusion (id ?case-id) (target "edible") (rule edible_stalk_color_above_ring_g))))
+  (assert (conclusion (id ?case-id) (target "edible") (rule edible_stalk_color_below_ring_g))))
 
 (defrule edible_odor_a
   "Edible: odor=a"
@@ -120,13 +120,13 @@
   =>
   (assert (conclusion (id ?case-id) (target "edible") (rule edible_odor_l))))
 
-(defrule edible_stalk_color_below_ring_g
-  "Edible: stalk_color_below_ring=g"
+(defrule edible_stalk_color_above_ring_g
+  "Edible: stalk_color_above_ring=g"
   (case (id ?case-id)
-        (stalk_color_below_ring g)
+        (stalk_color_above_ring g)
   )
   =>
-  (assert (conclusion (id ?case-id) (target "edible") (rule edible_stalk_color_below_ring_g))))
+  (assert (conclusion (id ?case-id) (target "edible") (rule edible_stalk_color_above_ring_g))))
 
 (defrule edible_population_a
   "Edible: population=a"
@@ -136,14 +136,6 @@
   =>
   (assert (conclusion (id ?case-id) (target "edible") (rule edible_population_a))))
 
-(defrule edible_stalk_color_above_ring_o
-  "Edible: stalk_color_above_ring=o"
-  (case (id ?case-id)
-        (stalk_color_above_ring o)
-  )
-  =>
-  (assert (conclusion (id ?case-id) (target "edible") (rule edible_stalk_color_above_ring_o))))
-
 (defrule edible_habitat_w
   "Edible: habitat=w"
   (case (id ?case-id)
@@ -151,6 +143,14 @@
   )
   =>
   (assert (conclusion (id ?case-id) (target "edible") (rule edible_habitat_w))))
+
+(defrule edible_stalk_color_above_ring_o
+  "Edible: stalk_color_above_ring=o"
+  (case (id ?case-id)
+        (stalk_color_above_ring o)
+  )
+  =>
+  (assert (conclusion (id ?case-id) (target "edible") (rule edible_stalk_color_above_ring_o))))
 
 (defrule edible_population_n
   "Edible: population=n"
@@ -220,3 +220,4 @@
   )
   =>
   (assert (conclusion (id ?case-id) (target "edible") (rule edible_gill_spacing_w_cap_color_n))))
+

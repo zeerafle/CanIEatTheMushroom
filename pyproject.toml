@@ -16,5 +16,8 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "kagglehub>=1.0.0",
     "marimo>=0.17.6",
+    "pandas>=3.0.2",
+    "scikit-learn>=1.8.0",
 ]
